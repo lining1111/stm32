@@ -19,14 +19,14 @@ __align(4) u8 mem2base[MEM2_MAX_SIZE] __attribute__((at(0X68000000)));					//外
 u16 mem1mapbase[MEM1_ALLOC_TABLE_SIZE];													//内部SRAM内存池MAP
 u16 mem2mapbase[MEM2_ALLOC_TABLE_SIZE] __attribute__((at(0X68000000+MEM2_MAX_SIZE)));	//外部SRAM内存池MAP
 //内存管理参数
-const u32 memtblsize[2]= {MEM1_ALLOC_TABLE_SIZE,MEM2_ALLOC_TABLE_SIZE};		//内存表大小
-const u32 memblksize[2]= {MEM1_BLOCK_SIZE,MEM2_BLOCK_SIZE};					//内存分块大小
-const u32 memsize[2]= {MEM1_MAX_SIZE,MEM2_MAX_SIZE};							//内存总大小
+const u32 memtblsize[2]= {MEM1_ALLOC_TABLE_SIZE,MEM2_ALLOC_TABLE_SIZE};					//内存表大小
+const u32 memblksize[2]= {MEM1_BLOCK_SIZE,MEM2_BLOCK_SIZE};								//内存分块大小
+const u32 memsize[2]= {MEM1_MAX_SIZE,MEM2_MAX_SIZE};									//内存总大小
 
 
 //内存管理控制器
 struct _m_mallco_dev mallco_dev= {
-	my_mem_init,				//内存初始化
+	my_mem_init,			//内存初始化
 	my_mem_perused,			//内存使用率
 	mem1base,mem2base,		//内存池
 	mem1mapbase,mem2mapbase,//内存管理状态表
